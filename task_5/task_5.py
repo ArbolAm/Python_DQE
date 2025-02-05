@@ -31,6 +31,7 @@ class NewsAgent:
     def save_to_file(record):
         with open('news_feed.txt', 'a') as file:
             file.write(record + '\n')
+            file.close()
 
 
 class News(NewsAgent):
