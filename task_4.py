@@ -63,8 +63,9 @@ def list_to_dict(raw_list):
     return final_dict
 
 
-print(LIST)
-print(list_to_dict(LIST))
+if __name__ == '__main__':
+    print(LIST)
+    print(list_to_dict(LIST))
 
 
 # task 3
@@ -124,5 +125,6 @@ def count_whitespaces(string):
     return whitespace_count
 
 
-print(correct_iz(add_sentence(text)))
-print(count_whitespaces(text))
+if __name__ == '__main__':
+    print(correct_iz(add_sentence(text)))
+    print(count_whitespaces(text))

@@ -28,8 +28,8 @@ class NewsAgent:
             return None
 
     @staticmethod
-    def save_to_file(record):
-        with open('news_feed.txt', 'a') as file:
+    def save_to_file(record, publish_path='news_feed.txt'):
+        with open(publish_path, 'a') as file:
             file.write(record + '\n')
             file.close()
 
@@ -40,9 +40,9 @@ class News(NewsAgent):
         self.city = input("Please, provide the name of the city: ")
         self.date = datetime.now().strftime('%d/%m/%Y %H:%M')
 
-    def publish(self):
+    def publish(self, publish_path):
         record = f"News | Title: {self.news_title} \nCity: {self.city}, Date: {self.date}"
-        self.save_to_file(record)
+        self.save_to_file(record, publish_path)
         print(f"News published: {record}")
 
 
@@ -53,17 +53,24 @@ class PrivateAdd(NewsAgent):
         self.expiration_date_obj = datetime.strptime(self.expiration_date, '%d/%m/%Y')
         self.days_left = (self.expiration_date_obj - datetime.now()).days
 
-    def publish(self):
+    def publish(self, publish_path):
         record = f"PrivateAd | Title: {self.news_title} \nExpiration Date: {self.expiration_date} | Days Left: {self.days_left}"
-        self.save_to_file(record)
+        self.save_to_file(record, publish_path)
         print(f"Private ad published: {record}")
 
 
-NEWS_TYPE = input('Select news type: | PrivateAdd | | News | \n__enter the fullname of desired type \n')
-news_title = input('\nWrite the title\n')
+if __name__ == '__main__':
+    NEWS_TYPE = input('Select news type: | PrivateAdd | | News | \n__enter the fullname of desired type \n')
+    news_title = input('\nWrite the title\n')
 
-news_agent = NewsAgent(NEWS_TYPE, news_title)
-news = news_agent.create_news()
+    news_agent = NewsAgent(NEWS_TYPE, news_title)
+    news = news_agent.create_news()
 
-if news:
-    news.publish()
+    IS_CUSTOM_PATH = int(input('would you like to keep in custom folder? | no - 0 | | yes - 1 |'))
+    if IS_CUSTOM_PATH:
+        CUSTOM_PATH = input('enter custom path')
+    else:
+        CUSTOM_PATH = 'news_feed.txt'
+
+    if news:
+        news.publish(CUSTOM_PATH)
