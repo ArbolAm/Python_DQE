@@ -16,7 +16,7 @@ def letter_count(text):
         lower_letter = letter.lower()
 
         if lower_letter not in letter_dict:
-            letter_dict[lower_letter] = {'count_all': 0, 'count_uppercase': 0}
+            letter_dict[lower_letter] = {'count_all': 1, 'count_uppercase': 0}
         else:
             letter_dict[lower_letter]['count_all'] += 1
 
@@ -41,5 +41,29 @@ def word_count(text):
     return word_count_dict
 
 
-def publish_csv():
-    pass
+def word_publish_csv(word_dict):
+    with open('published/words.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+
+        writer.writerow(['Word', 'Count'])
+
+        for key, value in word_dict.items():
+            writer.writerow([key, value])
+
+    print('file updated/ published')
+
+
+def letter_publish_csv(letter_dict):
+    with open('published/letters.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+
+        writer.writerow(['letter', 'count_all', 'count_uppercase', 'percentage'])
+
+        for key, value in letter_dict.items():
+            writer.writerow([key, value['count_all'], value['count_uppercase'], value['percentage']])
+
+    print('file updated/ published')
+
+
+word_publish_csv(word_count(raw_text))
+letter_publish_csv(letter_count(raw_text))
