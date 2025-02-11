@@ -2,3 +2,11 @@ PrivateAd | Title: sell house
 Expiration Date: 15/09/2026 | Days Left: 586
 News | Title: car crashed 
 City: Tbilisi, Date: 05/02/2025 13:12
+News | Title: new club opened 
+City: , Date: 11/02/2025 12:13
+News | Title: new pub opened 
+City: , Date: 11/02/2025 12:13
+News | Title: new club opened 
+City: tbilisi, Date: 11/02/2025 12:20
+News | Title: new pub opened 
+City: minsk, Date: 11/02/2025 12:20

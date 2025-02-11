@@ -14,15 +14,18 @@ You need to implement:
 
 
 class NewsAgent:
-    def __init__(self, news_type, news_title):
+    def __init__(self, news_type, news_title, json_city=''):
         self.news_type = news_type
         self.news_title = news_title
+        self.json_city = json_city
 
     def create_news(self):
         if self.news_type == 'News':
             return News(self.news_title)
         elif self.news_type == 'PrivateAdd':
             return PrivateAdd(self.news_title)
+        elif self.news_type == 'JsonAdd':
+            return JsonAdd(self.news_title, self.json_city)
         else:
             print("Invalid news type selected!")
             return None
@@ -42,6 +45,17 @@ class News(NewsAgent):
 
     def publish(self, publish_path):
         record = f"News | Title: {self.news_title} \nCity: {self.city}, Date: {self.date}"
+        self.save_to_file(record, publish_path)
+        print(f"News published: {record}")
+
+
+class JsonAdd(NewsAgent):
+    def __init__(self, news_title, city):
+        super().__init__('PrivateAdd', news_title, city)
+        self.date = datetime.now().strftime('%d/%m/%Y %H:%M')
+
+    def publish(self, publish_path):
+        record = f"News | Title: {self.news_title} \nCity: {self.json_city}, Date: {self.date}"
         self.save_to_file(record, publish_path)
         print(f"News published: {record}")
 

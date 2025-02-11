@@ -1,0 +1,13 @@
+{
+  "1": {
+
+    "news_type": "JsonAdd",
+    "city": "tbilisi",
+    "title": "new club opened"
+  },
+  "2": {
+    "news_type": "JsonAdd",
+    "city": "minsk",
+    "title": "new pub opened"
+  }
+}
