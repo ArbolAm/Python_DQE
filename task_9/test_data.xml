@@ -1,0 +1,12 @@
+<news>
+    <article>
+        <news_type>XmlAdd</news_type>
+        <title>Big Game Tonight!</title>
+        <city>New York</city>
+    </article>
+    <article>
+        <news_type>XmlAdd</news_type>
+        <title>Sunny Days Ahead</title>
+        <city>Los Angeles</city>
+    </article>
+</news>

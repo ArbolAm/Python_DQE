@@ -10,3 +10,7 @@ News | Title: new club opened
 City: tbilisi, Date: 11/02/2025 12:20
 News | Title: new pub opened 
 City: minsk, Date: 11/02/2025 12:20
+News | Title: Big Game Tonight! 
+City: New York, Date: 26/02/2025 01:05
+News | Title: Sunny Days Ahead 
+City: Los Angeles, Date: 26/02/2025 01:05

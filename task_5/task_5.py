@@ -26,6 +26,8 @@ class NewsAgent:
             return PrivateAdd(self.news_title)
         elif self.news_type == 'JsonAdd':
             return JsonAdd(self.news_title, self.json_city)
+        elif self.news_type == 'XmlAdd':
+            return JsonAdd(self.news_title, self.json_city)  # for xml also
         else:
             print("Invalid news type selected!")
             return None
