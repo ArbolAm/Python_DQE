@@ -1,4 +1,5 @@
 from datetime import datetime
+import sqlite3
 
 
 """Create a tool, which will do user generated news feed:
@@ -22,6 +23,9 @@ class NewsAgent:
     def create_news(self):
         if self.news_type == 'News':
             return News(self.news_title)
+        elif self.news_type == 'News_sql':
+            news = News(self.news_title)
+            self.insert_news(news)
         elif self.news_type == 'PrivateAdd':
             return PrivateAdd(self.news_title)
         elif self.news_type == 'JsonAdd':
@@ -37,6 +41,16 @@ class NewsAgent:
         with open(publish_path, 'a') as file:
             file.write(record + '\n')
             file.close()
+
+    @staticmethod
+    def insert_news(news):
+        with sqlite3.connect('task_10.db') as connection:
+            cursor = connection.cursor()
+            cursor.execute('''CREATE TABLE IF NOT EXISTS news (title TEXT, city TEXT)''')
+            cursor.execute('''INSERT INTO news (title, city) VALUES (?, ?)''',
+                           (news.news_title, news.city))
+            connection.commit()
+            print(f"News '{news.news_title}' inserted into the database.")
 
 
 class News(NewsAgent):
